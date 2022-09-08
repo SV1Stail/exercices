@@ -61,15 +61,16 @@ p=" "
 for i in range(4):
     print(p*i,a*x[i])
 """
-a=5
+
+
+a=int(input())
 x=0
-i=4
 for i in range(a):
+    x+=1
+    for z in range(a-x):
+        print("*", end="")
     for j in range (i):
-        print('*', end="")
-
-
+        print(' ', end="")
     print(' ')
-
 
 
