@@ -158,8 +158,7 @@ b[0] = 20
 a = [5, 6]
 print(a)
 '''
-from operator import index
-
+'''
 
 a=[int(i)for i in input().split()]
 s=0
@@ -176,6 +175,15 @@ for x in range(len(a)):
         z.append(int(a[x-1])+int(a[x+1]))
 
 print(" ".join(map(str, z)))
+'''
+
+a=[int(i)for i in input().split()]
+z=[]
+
+for i in range (len(a)):
+    if a.count(a[i])>1 and a[i]not in z:
+        z.append(a[i])
+print (" ".join(map(str, z)))
 
 
 
