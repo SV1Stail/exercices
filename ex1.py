@@ -243,10 +243,79 @@ for i in range(len(mat)):
         print(x, end=' ')
     print()
 '''
+'''
 n=int(input())
 mat=[[0]*n for i in range(n)] 
 for i in range(n):
     for j in range(n):
         print(n, end="")
     print(' ')
-print(mat)
+pr0int(mat)
+'''
+'''
+n=int(input())
+dx, dy = 1, 0
+x, y = 0, 0
+mat = [[None] * n for _ in range(n)]
+for i in range(1, n**2+1):
+    mat[x][y] = i
+    nx, ny = x+dx, y+dy
+    if 0 <= nx < n and 0 <= ny < n and not mat[nx][ny]:                                                                #улитка циклом FOR
+        x, y = nx, ny
+    else:
+        dx, dy = -dy, dx
+        x, y = x+dx, y+dy
+for x in list(zip(*mat)):
+    print(*x)
+'''
+'''
+def f(n):
+    return n * 10 + 5
+    
+print(f(f(f(10))))
+'''
+'''
+def f(x):
+    if x<=-2:
+        return 1-(x+2)**2
+    elif -2<x<=2:
+        return (-x)/2
+    elif 2<x:
+        return (x-2)**2+1
+print(f(4.5))
+'''
+'''
+def modify_list(l):
+    l_new=[]
+    len_l=(len(l))
+    for i in range(len_l):
+        if l[i]%2==0:
+            l[i]//=2
+        else:
+            l[i]="*"
+    while l.count("*")!=0:
+        l.remove("*")
+
+lst = [1, 2, 3, 4, 5, 6]
+
+print(modify_list(lst))
+print(lst)
+modify_list(lst)
+print(lst)  
+lst = [10, 5, 8, 3]
+modify_list(lst)
+print(lst) 
+'''
+
+
+
+def d(l):
+    dictionary={}
+    mn=set(l)
+    for i in mn:
+        dictionary[i]=l.count(i)
+    for key, value in dictionary.items():
+        return key, value
+
+stroka=[i.lower() for i in input().split()]
+print(d(stroka))
