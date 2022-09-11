@@ -307,15 +307,75 @@ modify_list(lst)
 print(lst) 
 '''
 
+'''
+
+l=[i.lower() for i in input().split()]
+dictionary={}
+mn=set(l)
+for i in mn:
+    dictionary[i]=l.count(i)
+for key, value in dictionary.items():
+    print(key, value)
+'''
+'''
+def update_dictionary(d, key, value):
+    if key in d: #если key в списке
+        d[key]+=[value]
+    elif (key not in d ) and (key*2 in d): #если  key не в списке и key*2 в списке
+        d[key*2]+=[value]
+    elif (key not in d ) and (key*2 not in d ):
+        d[key*2]=[value]
+
+z = {1: ["один"],2: "два"}
+d={}
+
+print(update_dictionary(d, 1, -1))  # None
+print(d)                            # {2: [-1]}
+update_dictionary(d, 2, -2)
+print(d)                            # {2: [-1, -2]}
+update_dictionary(d, 1, -3)
+print(d)   
+'''
+
+dictionary={}
+a=[]
+for i in range (int(input())):
+    a.append(int(input()))
+for i in range (len(a)):
+    if a[i] not in dictionary:
+        dictionary[a[i]]=a[i]+1000       #f(a[i])
+        print(dictionary[a[i]])
+    else:
+        print(dictionary[a[i]],'*')
 
 
-def d(l):
-    dictionary={}
-    mn=set(l)
-    for i in mn:
-        dictionary[i]=l.count(i)
-    for key, value in dictionary.items():
-        return key, value
 
-stroka=[i.lower() for i in input().split()]
-print(d(stroka))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
