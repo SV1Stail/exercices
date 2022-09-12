@@ -349,21 +349,59 @@ for i in range (len(a)):
         print(dictionary[a[i]],'*')
 '''
 '''
-with open ("") as file :
-    stroka = file.readline()'''
+with open ("dataset_3363_2.txt") as file :
+    stroka = file.readline()
+
 import re
-stroka = 'a1b1c1e0b'
+#stroka = 'a1b1c1e0b1'
 letter=[]
 numbs=[]
+stroka=stroka.strip()
 letter+=re.split('\d+' , stroka)
 numbs+=re.split('\D+', stroka)
-letter.pop()
+letter.pop()                                                    #Напишите программу, которая считывает из файла строку, соответствующую тексту, сжатому с помощью кодирования повторов, и производит обратную операцию, получая исходный текст.
 numbs.pop(0)
-
+stroka=""
 for i in range(len(numbs)):
     numbs[i]=int(numbs[i])
     letter[i]*=numbs[i]
-    print (letter[i],end='')
+    stroka+=letter[i]
+print(stroka)
+with open ('data_clear.txt',"w") as file:
+    file.write(stroka)
+'''
+import re
+stroka_low=[]
+
+sorted_dictionary={}
+with open ("3.txt") as file : #открыть файл
+    for i in file:
+        i=i.strip().lower().split(' ')  # удалить пробелы вначале и конце(убрать \n), разделить строку и вернуть подстроки в виде списка
+        stroka_low+=i    #добавляет элементы к списку stroka для последущей обработки
+#stroka=stroka.split(' ') #перевести в low, разделить по пробелам 
+stroka_size=len(stroka_low) #размер строки
+dictionary={}
+for i in range(stroka_size):  
+    if stroka_low[i] not in dictionary:
+        dictionary[stroka_low[i]]=stroka_low.count(stroka_low[i]) #в созданный словарь записываем: key=слово, value=кол-во этих слов в файла
+max_value= max(dictionary.values()) #находим максимальное кол-во слов в value словаря
+max_dictionary = {key: value for key, value in dictionary.items() if value == max_value} #создаём словарь со словами имеющими одинаково максимальное значение
+if len(max_dictionary)>1: #если в словаре максимальных значений больше одного значения
+    #выбираем лексикографически первое имя ключа
+    sorted_dictionary=dict(sorted(max_dictionary.items())) #сортируем словарь по лексикографическому значению ключа
+    itemss = list(sorted_dictionary.items())#переводим словарь в список для вытаскивания первого (максимального) отсортированного значения по индексу. !!! происходит так что получаем список а внутри него кортежи с ключом и значением из словаря
+    del itemss[1:] #удаляем всё кроме первого из списка
+    itemss=dict(itemss)#переводим список в словарь
+    x=''.join('{}'.format(key) for key in itemss.keys())
+    y=''.join('{}'.format(key) for key in itemss.values())
+    z=x+' '+y
+else:
+    x=''.join('{}'.format(key) for key in max_dictionary.keys())
+    y=''.join('{}'.format(key) for key in max_dictionary.values())
+    z=x+' '+y
+with open ('data_clear2.txt',"w") as file:
+    file.write(z)
+
 
 
 
