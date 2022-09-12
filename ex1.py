@@ -336,7 +336,7 @@ print(d)                            # {2: [-1, -2]}
 update_dictionary(d, 1, -3)
 print(d)   
 '''
-
+'''
 dictionary={}
 a=[]
 for i in range (int(input())):
@@ -347,11 +347,23 @@ for i in range (len(a)):
         print(dictionary[a[i]])
     else:
         print(dictionary[a[i]],'*')
+'''
+'''
+with open ("") as file :
+    stroka = file.readline()'''
+import re
+stroka = 'a1b1c1e0b'
+letter=[]
+numbs=[]
+letter+=re.split('\d+' , stroka)
+numbs+=re.split('\D+', stroka)
+letter.pop()
+numbs.pop(0)
 
-
-
-
-
+for i in range(len(numbs)):
+    numbs[i]=int(numbs[i])
+    letter[i]*=numbs[i]
+    print (letter[i],end='')
 
 
 
