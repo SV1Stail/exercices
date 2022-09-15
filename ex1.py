@@ -369,7 +369,7 @@ for i in range(len(numbs)):
 print(stroka)
 with open ('data_clear.txt',"w") as file:
     file.write(stroka)
-'''
+''''''
 import re
 stroka_low=[]
 
@@ -378,7 +378,7 @@ with open ("3.txt") as file : #открыть файл
     for i in file:
         i=i.strip().lower().split(' ')  # удалить пробелы вначале и конце(убрать \n), разделить строку и вернуть подстроки в виде списка
         stroka_low+=i    #добавляет элементы к списку stroka для последущей обработки
-#stroka=stroka.split(' ') #перевести в low, разделить по пробелам 
+
 stroka_size=len(stroka_low) #размер строки
 dictionary={}
 for i in range(stroka_size):  
@@ -401,18 +401,59 @@ else:
     z=x+' '+y
 with open ('data_clear2.txt',"w") as file:
     file.write(z)
+'''
 
+'''
+numb=int(input())
+print("Следующее за числом",numb,"число:",numb+1)
+print("Для числа",numb, "предыдущее число:",numb-1)
 
+'''
+import re
+marks_osn=[]
+only_names=[]
 
+sr=0
+with open ("4.txt",encoding='utf-8') as file : #открыть файл
+    for i in file:
+        i=i.strip().lower().split(';')  # удалить пробелы вначале и конце(убрать \n), разделить строку и вернуть подстроки в виде списка
+        marks_osn+=i    #добавляет элементы к списку stroka для последущей обработки
+stroka_size=len(marks_osn) #размер строки
+marks_numbs=[]
+for i in range(0,stroka_size,4):
+    marks_osn[i+1]=int(marks_osn[i+1])
+    marks_osn[i+2]=int(marks_osn[i+2])
+    marks_osn[i+3]=int(marks_osn[i+3])
+    only_names.append(marks_osn[i]) #имена учеников по порядку
+    marks_numbs.append(marks_osn[i+1:i+4]) #изначальные оценки по порядку only_names
+marks_sr=[]  #список для среднего показателя оценок каждого по очереди организуемой: only_names                       #средняя оценка по каждому ученику
+for i in marks_numbs:
+    sr=0
+    for j in i:
+        sr+=j
+    marks_sr.append(sr/3)  
+    marks_sr.append("\n")  
+#ср баллы по придметам:
+def schitalka(n):    #считает среднее значение по предметам (n индекс предмета из marks_numbs:  0=математика, 1=физика, 2=русс яз)
+    cnt=0
+    sr=0
+    for i in marks_numbs:
+        for j in i[n:n+1]:
+            sr+=j
+        cnt+=1
+    return sr/cnt
+math=schitalka(0)
+fizika=schitalka(1)
+russki=schitalka(2)
 
-
-
-
-
-
-
-
-
+with open ('data_clear2.txt',"w") as file:
+    for i in marks_sr:
+        file.write(str(i))
+    file.write(str(math))
+    file.write(str(" "))
+    file.write(str(fizika))
+    file.write(str(" "))
+    file.write(str(russki))
 
 
 
