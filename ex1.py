@@ -409,7 +409,7 @@ print("Следующее за числом",numb,"число:",numb+1)
 print("Для числа",numb, "предыдущее число:",numb-1)
 
 '''
-import re
+'''import re
 marks_osn=[]
 only_names=[]
 
@@ -453,9 +453,17 @@ with open ('data_clear2.txt',"w") as file:
     file.write(str(" "))
     file.write(str(fizika))
     file.write(str(" "))
-    file.write(str(russki))
+    file.write(str(russki))'''
 
-
+'''import math
+print(2*float(input())*math.pi)'''
+import sys
+s = ''
+s2 = ''
+for i in range(1,len(sys.argv)):
+    s = s + sys.argv[i]+' '
+s2 = s
+print(s2,end=' ')
 
 
 
