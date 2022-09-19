@@ -457,18 +457,69 @@ with open ('data_clear2.txt',"w") as file:
 
 '''import math
 print(2*float(input())*math.pi)'''
-import sys
+'''import sys
 s = ''
 s2 = ''
 for i in range(1,len(sys.argv)):
     s = s + sys.argv[i]+' '
 s2 = s
 print(s2,end=' ')
+'''
 
+team_dict={} #словарь с командами(key(команда)=value([побед, ничьих, поражений,всего очков]))
+quantity_games=int(input()) #количество игр
+team_list_iput=[input().split(";") for i in range(quantity_games)]#принимается список игр и получается матричный список, как: [[x1,x2],[x3,x4],[x5,x6]]
+lst_for_check=[] #помогает ввести только слова из списка команд в словарь команд в виде ключей
 
+#ввести названия команд словарь команд в виде ключей: 
+for i in team_list_iput: 
+    for j in i:
+        lst_for_check+=j
+        #если нет цифр от 0 до 9 в переборе то в переборе слово и мы записываем его в виде ключа в словарь команд:
+        if ("0" not in lst_for_check) and ("1" not in lst_for_check) and ("2" not in lst_for_check)and ("3" not in lst_for_check)and ("4" not in lst_for_check)and ("5" not in lst_for_check)and ("6" not in lst_for_check)and ("7" not in lst_for_check)and ("8" not in lst_for_check)and ("9" not in lst_for_check): 
+            team_dict[j]=[0,0,0,0,0]  #key(команда)=value([0,0,0,0,0]) не известно всё остальное из строки 468
+        lst_for_check.clear()
 
+for i in range(len(team_list_iput)):
+# левая команда победила
+    if int(team_list_iput[i][1])>int(team_list_iput[i][3]):#считывается чило голов
+    #дальше работа с названием команды, он стоит на один индекс раньше числа голов
+    #прибавить 1 к победам левой
+        team_dict[team_list_iput[i][0]][1]+=1 #left
+        
+    #прибавить 1 к играм левой и правой команд
+        team_dict[team_list_iput[i][0]][0]+=1#left
+        team_dict[team_list_iput[i][2]][0]+=1#right
+    #прибавить 1 к поражению правой команды
+        team_dict[team_list_iput[i][2]][3]+=1#right
+# правая команда победила
+    elif int(team_list_iput[i][1])<int(team_list_iput[i][3]):#считывается чило голов
+    #дальше работа с названием команды, он стоит на один индекс раньше числа голов
+    #прибавить 1 к победам правой
+        team_dict[team_list_iput[i][2]][1]+=1 #right
+    #прибавить 1 к играм левой и правой команд
+        team_dict[team_list_iput[i][0]][0]+=1#left
+        team_dict[team_list_iput[i][2]][0]+=1#right
+    #прибавить 1 к поражению левой команды
+        team_dict[team_list_iput[i][0]][3]+=1#left
+#ничья
+    elif int(team_list_iput[i][1])==int(team_list_iput[i][3]): #считывается чило голов
+    #дальше работа с названием команды, он стоит на один индекс раньше числа голов
+    #прибавить 1 к ничьим каждой команды
+        team_dict[team_list_iput[i][0]][2]+=1#left
+        team_dict[team_list_iput[i][2]][2]+=1#right
+    #прибавить 1 к играм левой и правой команд
+        team_dict[team_list_iput[i][0]][0]+=1#left
+        team_dict[team_list_iput[i][2]][0]+=1 #right
+    #общее число очков 
+        # левой команды
+    team_dict[team_list_iput[i][0]][4]=(team_dict[team_list_iput[i][0]][1]*3)+(team_dict[team_list_iput[i][0]][2]*1)
+        # правой команды
+    team_dict[team_list_iput[i][2]][4]=(team_dict[team_list_iput[i][2]][1]*3)+(team_dict[team_list_iput[i][2]][2]*1)
 
-
+for key, value in team_dict.items():
+    print(key+':',end="")
+    print(*value, end='\n')
 
 
 
