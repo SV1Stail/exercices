@@ -465,7 +465,7 @@ for i in range(1,len(sys.argv)):
 s2 = s
 print(s2,end=' ')
 '''
-
+'''
 team_dict={} #словарь с командами(key(команда)=value([побед, ничьих, поражений,всего очков]))
 quantity_games=int(input()) #количество игр
 team_list_iput=[input().split(";") for i in range(quantity_games)]#принимается список игр и получается матричный список, как: [[x1,x2],[x3,x4],[x5,x6]]
@@ -521,9 +521,19 @@ for key, value in team_dict.items():
     print(key+':',end="")
     print(*value, end='\n')
 
+'''
 
-
-
+d=int(input())# известные слова
+know_words={input().lower() for i in range(d)} #извекстные слова
+l=int(input())# строки текста для проверки
+text=[input().lower().split(" ") for i in range(l)] #текст в котором ищу ошиьки
+mistakes=set()
+for i in range(len(text)):
+    for j in text[i]:
+        if j not in know_words:
+            mistakes.add(j)
+for i in mistakes:
+    print(i)
 
 
 
