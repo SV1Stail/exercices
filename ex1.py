@@ -561,9 +561,11 @@ for i in dct:
         dct[i]=sum(dct[i])/(len(dct[i]))
 for k,v in dct.items():
     print(k,v)
-with open ("test.txt","w") as file:
+with open ("test.txt","w") as file:   
     for k,v in dct.items():
+    #спросить как сделать работу этой штуки в оду строку
         file.write(k)
         file.write(" ")
         file.write(str(v))
         file.write("\n")
+#123
