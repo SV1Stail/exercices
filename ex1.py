@@ -465,7 +465,7 @@ for i in range(1,len(sys.argv)):
 s2 = s
 print(s2,end=' ')
 '''
-
+'''
 team_dict={} #словарь с командами(key(команда)=value([побед, ничьих, поражений,всего очков]))
 quantity_games=int(input()) #количество игр
 team_list_iput=[input().split(";") for i in range(quantity_games)]#принимается список игр и получается матричный список, как: [[x1,x2],[x3,x4],[x5,x6]]
@@ -521,11 +521,49 @@ for key, value in team_dict.items():
     print(key+':',end="")
     print(*value, end='\n')
 
+'''
 
+'''
+def split_iput(x):
+    y=[]
+    y+=x
+    return y
 
+abc=split_iput(input())     #первоначальный алфавит
+wrench=split_iput(input()) #ключ к коду
+decrypt=input() #закодировать
+encrypt=input()  #декодировать
 
+decrypt_dict=dict(zip(abc,wrench))
 
+for i in range(len(abc)):
 
+    decrypt=decrypt.replace(abc[i],decrypt_dict[i])
 
+print(decrypt)
 
+'''
+dct=dict.fromkeys(['1','2',"3","4","5","6","7","8","9","10","11"])
+with open ("5.txt",encoding='utf-8') as f:
+    for i in f:
+        i=i.strip().lower().split()
 
+        i[2]=float(i[2])
+        if dct[i[0]] == None:
+            dct[i[0]]=[i[2]]
+        else:
+            dct[i[0]]=dct.get(i[0])+[i[2]]
+print(dct)
+for i in dct:
+    if dct[i]==None:
+        dct[i]="-"
+    else:
+        dct[i]=sum(dct[i])/(len(dct[i]))
+for k,v in dct.items():
+    print(k,v)
+with open ("test.txt","w") as file:
+    for k,v in dct.items():
+        file.write(k)
+        file.write(" ")
+        file.write(str(v))
+        file.write("\n")
