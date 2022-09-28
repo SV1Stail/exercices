@@ -522,6 +522,7 @@ for key, value in team_dict.items():
     print(*value, end='\n')
 
 '''
+<<<<<<< HEAD
 
 '''
 def split_iput(x):
@@ -569,3 +570,35 @@ with open ("test.txt","w") as file:
         file.write(str(v))
         file.write("\n")
 #123
+
+"""
+d=int(input())# известные слова
+know_words={input().lower() for i in range(d)} #извекстные слова
+l=int(input())# строки текста для проверки
+text=[input().lower().split(" ") for i in range(l)] #текст в котором ищу ошибки
+mistakes=set() #множество ошибок
+for i in range(len(text)): #по строчно читаю текст
+    for j in text[i]:  #каждое слово из текущей строки проверяю на ошибку
+        if j not in know_words: #если слово не известно, оно ошибка
+            mistakes.add(j)
+for i in mistakes: #вывод множества ошибок по одному элементу на каждой строке
+    print(i)
+"""
+
+def turtle():
+    n=int(input())
+    koordinati=[0,0]
+    for i in range (n):
+        stroka=input().lower().split()
+        stroka[1]=int(stroka[1])
+        if stroka[0]=="восток":
+            koordinati[0]+=stroka[1]
+        elif stroka[0]=="запад":
+            koordinati[0]-=stroka[1]
+        elif stroka[0]=="север":
+            koordinati[1]+=stroka[1]
+        elif stroka[0]=="юг":
+            koordinati[1]-=stroka[1]
+    return koordinati
+print(*turtle())
+
